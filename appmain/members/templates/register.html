@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <h1>Welcome To My Classroom </h1>
+
+    <style>
+        body
+        {
+            background: #d1e423; 
+             
+        }
+
+       
+         .register-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            height: 400px;
+            align-items: center;
+            box-sizing: border-box;
+            border-top: 10 px;
+            text-align: center;
+            margin: auto;
+            
+        }
+        .register-container h2 {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .register-container input[type="text"],
+        .register-container input[type="password"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .register-container input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+           
+        }
+        .register-container input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        h1{
+            text-align: center;
+            font-size: 50px;
+            margin-bottom: 120px;
+            
+        }
+
+        #email{
+            width: calc(100% - 20px);
+            
+            height: 36px;
+            border: 1px solid #ccc;
+            margin-bottom: 15px;
+            padding: 5px;
+            border-radius: 3px;
+            box-sizing: border-box;
+            
+        }
+    </style>
+</head>
+<body>
+
+    <div class="register-container">
+        <h2>Register</h2>
+        <form method="post">
+            {% csrf_token %}
+            <input type="text" name="first_name" placeholder=" First Name " required >
+            <input type="text" name="last_name" placeholder=" Last Name " required >
+            <input type="email" name="email" placeholder="Email id" id="email" >
+            <input type="password" name="password" placeholder="Password" required>
+            <input type="submit" value="Register">
+
+        </form>
+    </div>
+    
+</body>
+</html>
