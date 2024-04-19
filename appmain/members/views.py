@@ -24,6 +24,9 @@ def send_welcome_email(email):
     send_mail(subject, message, from_email, recipient_list, html_message=html_message)
 
 class RegisterApi(APIView):
+    def get(self, request):
+        return render(request, 'register.html')
+
     def post(self, request):
         data = request.POST
         serializer = CustomUserSerializer(data=data)
@@ -32,11 +35,13 @@ class RegisterApi(APIView):
             send_welcome_email(user.email)
             return redirect('login')
             # return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return render(request, 'register.html')
+        
         # return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 class LoginView(APIView):
+    def get(self, request):
+        return render(request, 'login.html')
     def post(self, request, format=None):
         email = request.data.get('email')
         password = request.data.get('password')
@@ -55,7 +60,7 @@ class LoginView(APIView):
             return render(request, 'login.html', {'error': 'Invalid username or password'})
 
             # return Response({'error': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)
-        return render(request, 'login.html')
+        # return render(request, 'login.html')
         # if user:
         #     if user.is_active:
         #         login(request, user) 
